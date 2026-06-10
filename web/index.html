@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio DevOps - Windows 98</title>
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
+    <style>
+        body {
+            background-color: #008080; /* O clássico verde-azulado do Win98 */
+            padding: 50px;
+            font-family: "MS Sans Serif", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .window {
+            width: 450px;
+        }
+        .status-bar-field {
+            font-size: 11px;
+        }
+        .excuse-box {
+            background: #fff;
+            border: 2px inset #d2d2d2;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 40px;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="window">
+    <div class="title-bar">
+        <div class="title-bar-text">🔧 DevOps_Excuses.exe - Portfólio</div>
+        <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="window-body">
+        <p style="margin-top: 0;">Bem-vindo ao meu Portfólio DevOps! O sistema encontrou um erro crítico na infraestrutura. Selecione uma opção abaixo:</p>
+        
+        <div class="excuse-box" id="excuseDisplay">
+            Clique em "Gerar Nova Desculpa" para iniciar o diagnóstico...
+        </div>
+
+        <section class="field-row" style="justify-content: flex-end">
+            <button onclick="generateExcuse()">Gerar Nova Desculpa</button>
+            <button onclick="alert('Sistema operando em modo de segurança!')">OK</button>
+        </section>
+    </div>
+
+    <div class="status-bar">
+        <p class="status-bar-field">Status: Pronto</p>
+        <p class="status-bar-field">Host: Ubuntu Server 26.04</p>
+        <p class="status-bar-field">Ambiente: Docker</p>
+    </div>
+</div>
+
+<script>
+    const excuses = [
+        "Status 500: Foi culpa do DNS. Sempre é o DNS.",
+        "Erro: O estagiário rodou o script na branch errada.",
+        "Falha crítica: Não é um bug, é uma feature não documentada.",
+        "Aviso: O Docker Hub estava fora do ar na hora do build.",
+        "Conflito: Na minha máquina funciona perfeitamente.",
+        "Timeout: Esse código foi escrito antes do primeiro café do dia."
+    ];
+    function generateExcuse() {
+        const randomIndex = Math.floor(Math.random() * excuses.length);
+        document.getElementById('excuseDisplay').innerText = excuses[randomIndex];
+    }
+</script>
+
+</body>
+</html>
