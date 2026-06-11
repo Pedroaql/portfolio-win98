@@ -7,28 +7,49 @@
     <link rel="stylesheet" href="https://unpkg.com/7.css">
     <style>
         body {
-            background-color: #008080; /* O clássico verde-azulado do Win98 */
-            padding: 50px;
+            background-color: #008080;
+            padding: 30px;
             font-family: "MS Sans Serif", Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 80vh;
+            min-height: 90vh;
+            margin: 0;
         }
         .window {
-            width: 450px;
+            width: 550px;
         }
-        .status-bar-field {
-            font-size: 11px;
+        .window-body {
+            margin: 4px;
         }
         .excuse-box {
             background: #fff;
             border: 2px inset #d2d2d2;
-            padding: 15px;
+            padding: 20px;
             margin: 15px 0;
-            min-height: 40px;
+            min-height: 50px;
             font-weight: bold;
             color: #000;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        /* Estilo para a barra de menus clássica */
+        .menu-bar {
+            display: flex;
+            background: #c0c0c0;
+            padding: 2px 6px;
+            gap: 12px;
+            border-bottom: 1px solid #808080;
+        }
+        .menu-item {
+            cursor: pointer;
+            font-size: 12px;
+            color: #000;
+        }
+        .menu-item:hover {
+            background: #000080;
+            color: #fff;
         }
     </style>
 </head>
@@ -36,35 +57,42 @@
 
 <div class="window">
     <div class="title-bar">
-        <div class="title-bar-text">🔧 DevOps_Excuses.exe - Portfólio</div>
+        <div class="title-bar-text">🔧 DevOps_Tools.exe - Painel de Controle</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
-            <button aria-label="Close"></button>
+            <button aria-label="Close" onclick="alert('Deseja mesmo fechar o sistema?')"></button>
         </div>
     </div>
 
+    <div class="menu-bar">
+        <div class="menu-item" onclick="alert('Função de Salvar em breve!')"><u>A</u>rquivo</div>
+        <div class="menu-item" onclick="alert('Limpar histórico acionado.')"><u>E</u>ditar</div>
+        <div class="menu-item" onclick="alert('Homelab rodando em Ubuntu 26.04 + Docker!')"><u>A</u>juda</div>
+    </div>
+
     <div class="window-body">
-        <p style="margin-top: 0;">Bem-vindo ao meu Portfólio DevOps! O sistema encontrou um erro crítico na infraestrutura. Selecione uma opção abaixo:</p>
+        <p style="margin-top: 10px;">⚡ <strong>Status do Lab:</strong> Operando em modo de Live Reload (Zero Downtime).</p>
         
         <div class="excuse-box" id="excuseDisplay">
-            Clique em "Gerar Nova Desculpa" para iniciar o diagnóstico...
+            Pronto para diagnosticar o ambiente de produção...
         </div>
 
-        <section class="field-row" style="justify-content: flex-end">
-            <button onclick="generateExcuse()">Gerar Nova Desculpa</button>
-            <button onclick="alert('Sistema operando em modo de segurança!')">OK</button>
+        <section class="field-row" style="justify-content: flex-end; gap: 6px;">
+            <button onclick="generateExcuse()" style="font-weight: bold;">Gerar Nova Desculpa</button>
+            <button onclick="alert('Sistema operando em segurança máxima.')">OK</button>
         </section>
     </div>
 
     <div class="status-bar">
-        <p class="status-bar-field">Status: Pronto</p>
-        <p class="status-bar-field">Host: Ubuntu Server 26.04</p>
-        <p class="status-bar-field">Ambiente: Docker</p>
+        <p class="status-bar-field">Status: Online</p>
+        <p class="status-bar-field" style="flex-grow: 2;">Containers: 1 Ativo</p>
+        <p class="status-bar-field" id="clock" style="font-weight: bold; padding-right: 10px;">00:00:00</p>
     </div>
 </div>
 
 <script>
+    // Gerador Dinâmico de Desculpas
     const excuses = [
         "Status 500: Foi culpa do DNS. Sempre é o DNS.",
         "Erro: O estagiário rodou o script na branch errada.",
@@ -73,10 +101,20 @@
         "Conflito: Na minha máquina funciona perfeitamente.",
         "Timeout: Esse código foi escrito antes do primeiro café do dia."
     ];
+
     function generateExcuse() {
         const randomIndex = Math.floor(Math.random() * excuses.length);
         document.getElementById('excuseDisplay').innerText = excuses[randomIndex];
     }
+
+    // Função do Relógio em Tempo Real
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('pt-BR');
+        document.getElementById('clock').innerText = "🕒 " + timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock(); // Inicializa imediatamente
 </script>
 
 </body>
