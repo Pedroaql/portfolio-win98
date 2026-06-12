@@ -1,0 +1,14 @@
+name: Deploy Automatico
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Atualizar arquivos no servidor
+        run: |
+          cd /home/casa/portfolio-win98
+          git pull origin main
