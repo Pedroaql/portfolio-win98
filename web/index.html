@@ -1,233 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Ribeiro - Windows 98 HomeLab</title>
-    <link rel="stylesheet" href="https://unpkg.com/7.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        /* --- Estilos da Área de Trabalho (The Teal Desktop) --- */
-        body {
-            background-color: #008080; /* A cor "Teal" clássica do 98 */
-            margin: 0;
-            padding: 0;
-            font-family: "MS Sans Serif", Arial, sans-serif;
-            height: 100vh;
-            overflow: hidden; /* Impede rolagem na área de trabalho */
-            display: flex;
-            flex-direction: column;
-        }
-
-        #desktop {
-            flex-grow: 1;
-            position: relative;
-            padding: 20px;
-        }
-
-        /* --- Estilos para os Ícones Clássicos --- */
-        .desktop-icon {
-            width: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            text-shadow: 1px 1px 1px #000; /* Sombra clássica no texto */
-            margin-bottom: 25px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-        .desktop-icon i {
-            font-size: 32px;
-            margin-bottom: 5px;
-        }
-        .desktop-icon:hover i {
-            background-color: rgba(0, 0, 128, 0.4); /* Efeito de seleção azul */
-            border-radius: 4px;
-        }
-
-        /* --- A Janela do Programa (Sua ferramenta de ontem) --- */
-        #devopsWindow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Centraliza na tela */
-            width: 550px;
-            z-index: 10; /* Fica acima da barra de tarefas */
-        }
-        .excuse-box {
-            background: #fff;
-            border: 2px inset #d2d2d2;
-            padding: 20px;
-            margin: 15px 0;
-            min-height: 50px;
-            font-weight: bold;
-            color: #000;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-        }
-        .menu-bar {
-            display: flex;
-            background: #c0c0c0;
-            padding: 2px 6px;
-            gap: 12px;
-            border-bottom: 1px solid #808080;
-        }
-        .menu-item {
-            cursor: pointer;
-            font-size: 12px;
-            color: #000;
-        }
-        .menu-item:hover {
-            background: #000080;
-            color: #fff;
-        }
-
-        /* --- Barra de Tarefas Clássica --- */
-        .taskbar {
-            background-color: #c0c0c0;
-            height: 30px;
-            border-top: 2px outset #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 4px;
-            z-index: 20;
-            box-sizing: border-box;
-        }
-
-        /* Botão Iniciar Clássico */
-        .start-button {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background-color: #c0c0c0;
-            border: 2px outset #fff;
-            padding: 2px 8px;
-            font-weight: bold;
-            font-size: 11px;
-            color: #000;
-            cursor: pointer;
-        }
-        .start-button:active {
-            border: 2px inset #fff;
-        }
-        .start-button img {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Área de Notificação (Tray) */
-        .tray {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #c0c0c0;
-            border: 2px inset #fff;
-            padding: 0 6px;
-            height: 22px;
-            font-size: 11px;
-            color: #000;
-        }
-        .tray-icon {
-            color: #000;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
-
 <div id="desktop">
-    <div class="desktop-icon" onclick="alert('Meu Computador: Ubuntu 26.04 Homelab')">
-        <i class="fa fa-desktop"></i>
-        Meu Computador
-    </div>
-    <div class="desktop-icon" onclick="alert('Ambiente de Rede: Rede Docker')">
-        <i class="fa fa-network-wired"></i>
-        Ambiente de Rede
-    </div>
-    <div class="desktop-icon" onclick="alert('Lixeira: Limpa!')">
-        <i class="fa fa-trash"></i>
-        Lixeira
-    </div>
-    <div class="desktop-icon" style="top: 200px;" onclick="document.getElementById('devopsWindow').style.display = 'block'">
-        <i class="fa fa-wrench"></i>
-        DevOps_Tools.exe
+    <div class="window" id="welcomeWindow" style="width: 300px; top: 100px; left: 100px; position: absolute;">
+        <div class="title-bar"><div class="title-bar-text">Bem-vindo</div></div>
+        <div class="window-body">
+            <p>Olá, visitante! Este é o HomeLab de:</p>
+            <h2 style="text-align: center; color: #000080;">Pedro Ribeiro</h2>
+        </div>
     </div>
 
-    <div class="window" id="devopsWindow">
+    <div class="desktop-icon" onclick="alert('Sistema: Ubuntu 26.04 LTS')">
+        <i class="fa fa-desktop" style="color: #fff; background: #000080; padding: 10px; border: 1px solid #fff;"></i>
+        Meu Comp.
+    </div>
+    
+    <div class="desktop-icon" ondblclick="document.getElementById('devopsWindow').style.display = 'block'">
+        <i class="fa fa-wrench" style="color: #fff; background: #000080; padding: 10px; border: 1px solid #fff;"></i>
+        DevOps_Tools
+    </div>
+
+    <div class="window" id="devopsWindow" style="display: none; width: 550px; position: absolute; top: 150px; left: 200px; z-index: 10;">
         <div class="title-bar">
             <div class="title-bar-text">🔧 DevOps_Tools.exe - Painel de Controle</div>
             <div class="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize"></button>
                 <button aria-label="Close" onclick="document.getElementById('devopsWindow').style.display = 'none'"></button>
             </div>
         </div>
-        
-        <div class="menu-bar">
-            <div class="menu-item" onclick="alert('Salvar (em breve!)')"><u>A</u>rquivo</div>
-            <div class="menu-item" onclick="alert('Editar')"><u>E</u>ditar</div>
-            <div class="menu-item" onclick="alert('Nostalgia pura rodando em Docker!')"><u>A</u>juda</div>
-        </div>
-
         <div class="window-body">
-            <p style="margin-top: 10px;">⚡ <strong>Status do Lab:</strong> Operando em modo de Live Reload (Zero Downtime).</p>
-            
-            <div class="excuse-box" id="excuseDisplay">
-                Pronto para gerar desculpas nostálgicas...
-            </div>
-
-            <section class="field-row" style="justify-content: flex-end; gap: 6px;">
-                <button onclick="generateExcuse()" style="font-weight: bold;">Gerar Nova Desculpa</button>
-                <button onclick="alert('OK')">OK</button>
+            <p><strong>Configuração atual:</strong> Servidor Casa/Ubuntu</p>
+            <div class="excuse-box" id="excuseDisplay">Clique no botão abaixo para um diagnóstico:</div>
+            <section class="field-row" style="justify-content: flex-end;">
+                <button onclick="generateExcuse()">Gerar Diagnóstico</button>
             </section>
         </div>
     </div>
 </div>
 
 <div class="taskbar">
-    <div class="start-button" onclick="alert('Menu Iniciar (em breve!)')">
-        <img src="https://upload.wikimedia.org/wikipedia/pt/2/29/Windows_logo_1995.png" alt="Windows Logo">
-        Iniciar
+    <div class="start-button">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/2/29/Windows_logo_1995.png" alt="Win">
+        <strong>Iniciar</strong>
     </div>
     <div class="tray">
-        <i class="fa fa-volume-up tray-icon"></i>
-        <i class="fa fa-docker tray-icon" style="color: #008080;" title="Docker Host Online"></i>
-        <span id="clock" style="font-weight: bold;">00:00:00</span>
+        <i class="fa fa-user"></i> <span>Pedro Ribeiro</span>
+        <span id="clock" style="border-left: 1px solid #808080; padding-left: 10px; margin-left: 10px;">00:00:00</span>
     </div>
 </div>
-
-<script>
-    // Gerador Dinâmico de Desculpas (Melhorado com desculpas DevOps clássicas)
-    const excuses = [
-        "Status 500: Foi culpa do DNS. Sempre é o DNS.",
-        "Erro: O estagiário rodou o script na branch master.",
-        "Falha crítica: Não é um bug, é uma feature não documentada.",
-        "Aviso: O Docker Hub estava fora do ar na hora do build.",
-        "Conflito: Na minha máquina funciona perfeitamente.",
-        "Timeout: Esse código foi escrito antes do primeiro café do dia.",
-        "Erro de Ambiente: Alguém alterou a variável .env em produção manualmente.",
-        "Falha no Build: Faltou uma vírgula no docker-compose.yml."
-    ];
-
-    function generateExcuse() {
-        const randomIndex = Math.floor(Math.random() * excuses.length);
-        document.getElementById('excuseDisplay').innerText = excuses[randomIndex];
-    }
-
-    // Função do Relógio em Tempo Real (Mantendo o que você já fez)
-    function updateClock() {
-        const now = new Date();
-        const timeString = now.toLocaleTimeString('pt-BR');
-        document.getElementById('clock').innerText = timeString;
-    }
-    setInterval(updateClock, 1000);
-    updateClock(); // Inicializa imediatamente
-</script>
-
-</body>
-</html>
