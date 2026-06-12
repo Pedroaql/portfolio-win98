@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Atualizar arquivos no servidor
         run: |
-          cd /home/estudo/Documentos/Projeto/portfolio-win98
+          cd /home/casa/portfolio-win98
           git pull origin main
